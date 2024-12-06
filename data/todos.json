@@ -1,0 +1,17 @@
+[
+    {
+        "id":1,
+        "task":"wash dishes",
+        "status":true
+    },
+    {
+        "id":2,
+        "task":"learn javaScript",
+        "status":false
+    },
+    {
+        "id":3,
+        "task":"make breakfast",
+        "status":true
+    }
+]

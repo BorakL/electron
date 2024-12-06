@@ -86,8 +86,14 @@ Menu.setApplicationMenu(menu)
 app.on('ready', ()=>{
     mainWindow = new BrowserWindow({
         width:600,
-        height:600
+        height:600,
+        webPreferences: {
+            nodeIntegration: true, // Enable Node.js integration if needed
+            contextIsolation: false,
+        }
     });
     mainWindow.loadFile('index.html')
+    // Open Developer Tools automatically
+    mainWindow.webContents.openDevTools();
 })
 
