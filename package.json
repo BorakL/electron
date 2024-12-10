@@ -31,6 +31,8 @@
     "electron": "^33.2.1"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "@reduxjs/toolkit": "^2.4.0",
+    "electron-squirrel-startup": "^1.0.1",
+    "redux": "^5.0.1"
   }
 }
