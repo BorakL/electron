@@ -1,4 +1,4 @@
-const { createSlice } = require("@reduxjs/toolkit");
+const { createSlice, configureStore } = require("@reduxjs/toolkit");
 
 const counterSlice = createSlice({
     name:'counter',
@@ -16,6 +16,7 @@ const counterSlice = createSlice({
     }
 })
 
-module.exports = {
-    reducer: counterSlice.reducer
-};
+const counterActions = counterSlice.actions;
+const counterReducer = counterSlice.reducer;
+
+module.exports = { counterActions, counterReducer}

@@ -1,8 +1,9 @@
 // const store = require("./src/reducers"); 
 
-const store = require("./src/reducersToolkit");
-const counterSlice = require("./src/reducersToolkit/counterReducer");
-const {increment} = counterSlice.actions
+const store = require("./src/reducersToolkit")
+const { counterActions } = require("./src/reducersToolkit/counterReducer")
+const { todoActions } = require("./src/reducersToolkit/todoReducer")
+const { userActions } = require("./src/reducersToolkit/userReducer")
 
 // store.dispatch({
 //     type: 'INCREMENT'
@@ -44,7 +45,17 @@ const {increment} = counterSlice.actions
 // console.log("name",name1)
 // console.log("age",age)
 
-store.dispatch(increment());
-store.dispatch(increment());
-store.dispatch(increment());
-console.log("gfds",store.getState())
+store.dispatch(counterActions.increment())
+store.dispatch(userActions.setName("Peter"))
+store.dispatch(userActions.setAge(4))
+store.dispatch(todoActions.addTodo("Go for a running"))
+store.dispatch(todoActions.addTodo("Do laundry"))
+store.dispatch(todoActions.toggleTodo(1))
+store.dispatch(todoActions.addTodo("Go for a gym"))
+store.dispatch(todoActions.toggleTodo(3))
+store.dispatch(todoActions.deleteTodo(3))
+store.dispatch(todoActions.addTodo("Go for a gym"))
+
+
+
+console.log("state", store.getState())
