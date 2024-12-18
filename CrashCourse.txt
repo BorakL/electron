@@ -1,2 +1,0 @@
-electron-forge/cli
-npx electron-forge import
