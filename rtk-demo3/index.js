@@ -1,6 +1,7 @@
 const store = require("./app/store")
 const counterSlice = require("./features/counter/counterSlice")
 const todoSlice = require("./features/todo/todoSlice")
+const userSlice = require("./features/user/userSlice")
 
 store.dispatch(counterSlice.actions.increment())
 store.dispatch(counterSlice.actions.increment())
@@ -17,5 +18,6 @@ store.dispatch(todoSlice.actions.addTodo({id:4, task:"Wahs the dishes"}))
 store.dispatch(todoSlice.actions.addTodo({id:5, task:"make the bed"}))
 store.dispatch(todoSlice.actions.removeTodo({id:4}))
 
+store.dispatch(userSlice.fetchUsers())
 
-console.log("counter", store.getState())
+console.log("usersss", store.getState() )
