@@ -1,11 +1,9 @@
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 const  axios  = require("axios");
 
-const fetchUsers = createAsyncThunk('user/fetchUsers', ()=>{
-    return axios
-        .get('https://jsonplaceholder.typicode.com/users')
-        .then(response => {
-            return response.data.map(user => user.id)})
+const fetchUsers = createAsyncThunk('user/fetchUsers', async ()=>{
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users')
+    return response.data.map(user => user.id);
 })
 
 const initialState = {

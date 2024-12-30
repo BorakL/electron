@@ -18,6 +18,7 @@ store.dispatch(todoSlice.actions.addTodo({id:4, task:"Wahs the dishes"}))
 store.dispatch(todoSlice.actions.addTodo({id:5, task:"make the bed"}))
 store.dispatch(todoSlice.actions.removeTodo({id:4}))
 
-store.dispatch(userSlice.fetchUsers())
 
-console.log("usersss", store.getState() )
+store.dispatch(userSlice.fetchUsers())
+    .then((data)=>console.log(store.getState()))
+    .catch((error)=>console.log('Error: ',error))
