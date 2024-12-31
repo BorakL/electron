@@ -15,16 +15,18 @@ const Form4 = ()=>{
     const {
         register,
         handleSubmit,
-        formState: {errors, touchedFields, dirtyFields},
+        formState: {errors, touchedFields, dirtyFields, isValid, isSubmitting},
         watch,
-        getValues
-    } = useForm<Data>({defaultValues:data });
+        getValues,
+    } = useForm<Data>();
 
     const name = watch("name")
     
     const onSubmit = (data:Data)=>{ 
         console.log("Submitted Data: ",data)
     }
+
+    const getAttributes = () => { return {name:"surname", type:"text", id:"surname"} }
 
     useEffect(()=>{
         console.log("errors",errors)
@@ -33,11 +35,15 @@ const Form4 = ()=>{
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <h1>{name}</h1>
+            {isValid ? <h1>Valid</h1> : <h1>Not Valid!</h1>}
+            <div>
+                <label htmlFor="surname">Surname: </label>
+                <input {...getAttributes()} />
+            </div>
             <div className="input-field">
                 <label htmlFor="name">Name: </label>
                 <input 
                     type="text" 
-                    id="name" 
                     {...register("name",{
                         required: {
                             value: true,
@@ -63,7 +69,7 @@ const Form4 = ()=>{
                 />
                 <span>{errors.email && errors.email.message}</span>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={!isValid}>Submit</button>
             <button type="button" onClick={()=>console.log(getValues())}>Get Values</button>
         </form>
     )
